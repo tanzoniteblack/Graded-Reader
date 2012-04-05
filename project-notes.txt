@@ -1,0 +1,9 @@
+In XML file for graded reader text:
+   - have word information optionally in the file, if it is there have the word tab show that definition, if not then have it look it up in a dictionary.
+   - the text itself
+   - optional grammatical information (should be seperate from the text annotation)
+   - optional vocab list (should be seperate from the text annotation, this is the new vocab that the 'teacher' thinks is new for the student and might be important to look over before reading)
+   - sentence level is text annotation (i.e. only available for clicking on a specific sentence) which is supplied at the time of creating the file (optionally)
+
+1st step:
+    assume everything necessary is in the xml file for the text, and if not just say "data not available" or something like that. Later we'll create methods that automate what to do if data isn't available (i.e. dictionary look up, translator, etc.).
