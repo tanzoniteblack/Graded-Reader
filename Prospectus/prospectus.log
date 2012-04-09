@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2012.3.4)  7 APR 2012 21:20
+This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2012.3.4)  9 APR 2012 16:49
 entering extended mode
  %&-line parsing enabled.
 **prospectus.tex
@@ -101,11 +101,8 @@ Overfull \hbox (50.23053pt too wide) in paragraph at lines 30--31
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[1
-
-]
 File: grammar_tab.png Graphic file (type QTm)
- <use  "grammar_tab.png" >
+<use  "grammar_tab.png" >
 Overfull \hbox (50.4477pt too wide) in paragraph at lines 38--39
 [][] 
  []
@@ -113,14 +110,16 @@ Overfull \hbox (50.4477pt too wide) in paragraph at lines 38--39
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2] [3] [4] [5] (./prospectus.aux) ) 
+[1
+
+] [2] [3] [4] [5] (./prospectus.aux) ) 
 Here is how much of TeX's memory you used:
  593 strings out of 495724
  7083 string characters out of 1189347
- 54910 words of memory out of 3000000
+ 56910 words of memory out of 3000000
  3774 multiletter control sequences out of 15000+50000
  6975 words of font info for 25 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 25i,6n,19p,874b,262s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 25i,6n,19p,871b,262s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on prospectus.pdf (5 pages).
