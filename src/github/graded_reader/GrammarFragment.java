@@ -30,7 +30,7 @@ public class GrammarFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.grammar, container, false);
-		//setText("Text");
+
 		return view;
 	}
 

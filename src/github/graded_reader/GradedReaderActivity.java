@@ -14,7 +14,7 @@ public class GradedReaderActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.main);
+		setContentView(R.layout.main);
 		
 		//setup for tabs
 		ActionBar actionBar = getActionBar();
