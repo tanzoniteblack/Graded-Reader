@@ -1,0 +1,9 @@
+!SESSION 2012-04-18 17:24:42.141 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.7.0_03
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -clean
+
+!ENTRY org.eclipse.osgi 4 0 2012-04-18 17:24:44.490
+!MESSAGE The -clean (osgi.clean) option was not successful. Unable to clean the storage area: C:\Users\smokey\eclipse-SDK-3.7.2-win32-x86_64\eclipse\configuration\org.eclipse.osgi
