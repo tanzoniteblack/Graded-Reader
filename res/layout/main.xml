@@ -6,7 +6,7 @@
 
     <fragment
         class="github.graded_reader.TabFragment"
-        android:id="@+id/tabs"
+        android:id="@+id/tab_fragment"
         android:layout_width="0px"
         android:layout_weight="1"
         android:layout_height="match_parent" ></fragment>

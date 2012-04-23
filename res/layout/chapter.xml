@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
     
         <TextView
         android:id="@+id/chapterText"
@@ -12,6 +12,6 @@
         android:layout_marginTop="20dip"
         android:text="This is the chapter text."
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30dip" />
+        android:textSize="10dip" />
 
 </LinearLayout>

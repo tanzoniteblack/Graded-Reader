@@ -2,16 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-        <TextView
+    android:orientation="horizontal" >
+
+    <TextView
         android:id="@+id/grammarText"
-        android:layout_width="wrap_content"
+        android:layout_width="0px"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginTop="20dip"
+        android:layout_weight="1"
         android:text="This is the grammar page."
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30dip" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="10dip" />
+    
+    <fragment
+        android:id="@+id/chapter"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        class="github.graded_reader.ChapterFragment" >
+    </fragment>
 
 </LinearLayout>
