@@ -42,7 +42,6 @@ public class TabFragment extends Fragment {
 	}
 
 	public void setText(String item) {
-		Log.v("winner!!!!",item);
 		TextView view = (TextView) getView().findViewById(R.id.grammarText);
 		view.setText(item);
 	}
