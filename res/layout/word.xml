@@ -9,11 +9,9 @@
         android:layout_width="0px"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginTop="20dip"
-        android:text="This is the translated word."
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="10dip" />
+        android:text="rozkolora:\n\t'rose colored'"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <!--fragment
         android:id="@+id/chapter2"

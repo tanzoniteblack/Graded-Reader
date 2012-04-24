@@ -7,15 +7,15 @@
     <fragment
         class="github.graded_reader.TabFragment"
         android:id="@+id/tab_fragment"
-        android:layout_width="0px"
+        android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent" ></fragment>
 
     <fragment
         class="github.graded_reader.ChapterFragment"
         android:id="@+id/chapter"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_width="0px"
         android:layout_height="match_parent"></fragment>
 
 </LinearLayout>
