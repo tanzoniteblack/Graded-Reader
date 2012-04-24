@@ -6,13 +6,22 @@
 
     <TextView
         android:id="@+id/grammarText"
-        android:layout_width="0px"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dip"
         android:layout_weight="1"
         android:text="Past tense verbs end in 'is'\nFor example, 'estis' is the past tense for 'to be'."
         android:textAppearance="?android:attr/textAppearanceLarge"        
  />
+    
+        <TextView
+        android:id="@+id/junk"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dip"
+        android:layout_weight="1"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <!--fragment
         android:id="@+id/chapter"

@@ -6,13 +6,22 @@
 
     <TextView
         android:id="@+id/vocabularyText"
-        android:layout_width="0px"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dip"
         android:text="kiam : when\nnaskiĝi : to be born\nkolora : color\nkaj : and\nli : he"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_weight="1" />
 
+     <TextView
+      android:id="@+id/junk"
+      android:layout_width="fill_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="20dip"
+      android:text=""
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_weight="1" /> 
+    
     <!--fragment
         android:id="@+id/chapter1"
         android:layout_width="0px"

@@ -6,13 +6,22 @@
 
     <TextView
         android:id="@+id/wordText"
-        android:layout_width="0px"
+        android:layout_width="fill_parent"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:layout_marginTop="20dip"
         android:text="rozkolora:\n\t'rose colored'"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
+    <TextView
+        android:id="@+id/junk"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dip"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+    
     <!--fragment
         android:id="@+id/chapter2"
         android:layout_width="0px"
