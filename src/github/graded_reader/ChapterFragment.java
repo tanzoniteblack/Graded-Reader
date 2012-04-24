@@ -19,7 +19,7 @@ public class ChapterFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.e("Test", "hello");
+		Log.e("ChapterFragment", "Creation");
 	}
 
 	@Override

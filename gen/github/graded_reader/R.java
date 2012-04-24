@@ -19,14 +19,15 @@ public final class R {
         public static final int emptyView=0x7f060003;
         public static final int grammarText=0x7f060006;
         public static final int grammar_button=0x7f060004;
-        public static final int junk=0x7f060007;
-        public static final int menu=0x7f06000b;
-        public static final int sentenceText=0x7f060008;
-        public static final int settings=0x7f06000c;
+        public static final int left_view=0x7f060008;
+        public static final int main_layout=0x7f060007;
+        public static final int menu=0x7f06000c;
+        public static final int sentenceText=0x7f060009;
+        public static final int settings=0x7f06000d;
         public static final int tab_fragment=0x7f060000;
         public static final int vocab_button=0x7f060005;
-        public static final int vocabularyText=0x7f060009;
-        public static final int wordText=0x7f06000a;
+        public static final int vocabularyText=0x7f06000a;
+        public static final int wordText=0x7f06000b;
     }
     public static final class layout {
         public static final int activity_tab_fragment=0x7f030000;

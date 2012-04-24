@@ -14,15 +14,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"        
  />
     
-        <TextView
-        android:id="@+id/junk"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dip"
-        android:layout_weight="1"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
     <!--fragment
         android:id="@+id/chapter"
         android:layout_width="0px"
