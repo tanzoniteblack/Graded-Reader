@@ -21,7 +21,7 @@ public class GradedReaderActivity extends Activity {
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayUseLogoEnabled(false);
-
+				
 		//grammar tab
 		Tab tab = actionBar.newTab()
 				.setText("Grammar")

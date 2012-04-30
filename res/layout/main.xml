@@ -2,20 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal" >
-
-    <fragment
-        class="github.graded_reader.TabFragment"
-        android:id="@+id/tab_fragment"
-        android:layout_width="0px"
+    android:orientation="horizontal" 
+    android:id="@+id/main_layout">
+	
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent" ></fragment>
-
+        android:id="@+id/left_view">    
+        	<!-- fragment
+    			class="github.graded_reader.TabFragment"
+		        android:id="@+id/tab_fragment"
+		        android:layout_width="match_parent"
+		        android:layout_weight="1"
+		        android:layout_height="match_parent" >	        	    
+        	</fragment -->
+    </ScrollView>
+    
     <fragment
         class="github.graded_reader.ChapterFragment"
         android:id="@+id/chapter"
+        android:layout_width="fill_parent"
         android:layout_weight="1"
-        android:layout_width="0px"
-        android:layout_height="match_parent"></fragment>
-
+        android:layout_height="fill_parent">
+    </fragment>
 </LinearLayout>

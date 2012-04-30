@@ -23,7 +23,7 @@ public class MyTabListener<T extends Fragment> implements TabListener {
 		
 		if (mFragment == null) {
 			mFragment = Fragment.instantiate(mActivity, mClass.getName());
-			ft.add(android.R.id.content, mFragment, mTag);
+			ft.add(R.id.left_view, mFragment, mTag);
 		} else {
 			ft.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
 			ft.attach(mFragment);
@@ -33,7 +33,7 @@ public class MyTabListener<T extends Fragment> implements TabListener {
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
 		if (mFragment == null) {
 			mFragment = Fragment.instantiate(mActivity, mClass.getName());
-			ft.add(android.R.id.content, mFragment, mTag);
+			ft.add(R.id.left_view, mFragment, mTag);
 		} else {
 			ft.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
 			ft.attach(mFragment);

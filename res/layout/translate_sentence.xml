@@ -6,18 +6,17 @@
 
     <TextView
         android:id="@+id/sentenceText"
-        android:layout_width="0px"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginTop="20dip"
         android:layout_weight="1"
-        android:text="Translate this sentence."
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="10dip" />
+        android:text="When Karlo was born, rose-colored and healthy, his parents were still quite young."
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        />
 
     <!--fragment
         android:id="@+id/chapter3"
-        android:layout_width="0px"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         class="github.graded_reader.ChapterFragment" >
