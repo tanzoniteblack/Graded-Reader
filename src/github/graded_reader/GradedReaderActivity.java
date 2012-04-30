@@ -4,20 +4,27 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class GradedReaderActivity extends Activity
 				implements OnSettingsDialogDoneListener {
 
+	public static final String PREFERENCES = "Preferences";
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		//retrieve preferences (last chapter)
+		SharedPreferences settings = getSharedPreferences(PREFERENCES, 0);
+		int currentChapter = settings.getInt("currentChapter", 0);
+		setCurrentChapter(currentChapter);
 		
 		//setup for tabs
 		ActionBar actionBar = getActionBar();
@@ -74,9 +81,9 @@ public class GradedReaderActivity extends Activity
 		default:
 			break;
 		}
-
 		return true;
 	}
+
 	
 	private void createSettingsDialog() {
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -91,6 +98,30 @@ public class GradedReaderActivity extends Activity
 		if (cancelled)
 			s = tag + " was cancelled by the user.";
 		Log.v("GradedReader","s");
+	}
+	
+	protected void onStop() {
+		super.onStop();
+	}
+	
+	protected void onPause() {
+		super.onPause();
+		
+		//save preferences
+		SharedPreferences settings = getSharedPreferences(PREFERENCES,0);
+		SharedPreferences.Editor editor = settings.edit();
+		
+		int mChapter = 4; //this is the chapter number
+		editor.putInt("currentChapter",mChapter);
+		editor.commit();
+	}
+	
+	protected void onResume() {
+		
+	}
+	
+	private void setCurrentChapter(int currentChapter) {
+		//TODO: restore current chapter
 	}
 }
 
