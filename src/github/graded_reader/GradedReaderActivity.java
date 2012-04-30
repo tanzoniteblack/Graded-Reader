@@ -1,15 +1,18 @@
 package github.graded_reader;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.ActionBar.Tab;
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class GradedReaderActivity extends Activity {
+public class GradedReaderActivity extends Activity
+				implements OnSettingsDialogDoneListener {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -58,12 +61,15 @@ public class GradedReaderActivity extends Activity {
 		return true;
 	}
 
+		
+	
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.settings:
-			Toast.makeText(this, "You want to change the settings!", Toast.LENGTH_SHORT)
-			.show();
+			Log.v("Settings", "Launch");
+			this.createSettingsDialog();
 			break;
 		default:
 			break;
@@ -71,4 +77,22 @@ public class GradedReaderActivity extends Activity {
 
 		return true;
 	}
+	
+	private void createSettingsDialog() {
+		FragmentTransaction ft = getFragmentManager().beginTransaction();
+		
+		SettingsDialogFragment adf = SettingsDialogFragment.newInstance("Settings");
+		
+		adf.show(ft,"Settings Menu");
+	}
+	
+	public void onDialogDone(String tag, boolean cancelled, CharSequence message) {
+		String s = tag + " responds with: " + message;
+		if (cancelled)
+			s = tag + " was cancelled by the user.";
+		Log.v("GradedReader","s");
+	}
 }
+
+
+
