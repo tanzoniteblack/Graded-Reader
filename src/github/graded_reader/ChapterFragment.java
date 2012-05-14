@@ -9,8 +9,7 @@ import java.util.regex.Pattern;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
+import android.text.TextPaint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -46,30 +45,52 @@ public class ChapterFragment extends Fragment {
 		words[0] = "The";
 		words[1] = "man";
 		
-        ClickableSpan clickableSpan = null;
-
-        String regex = "\\w+";
-        Pattern p = Pattern.compile(regex);
-        final SpannableString text = new SpannableString("Kiam naskigis Karlo, rozkolora kaj sana, liaj gepatroj estis ankorau tre junaj.");
-        Matcher matcher = p.matcher(text);
-        while (matcher.find()) {
-            final int begin = matcher.start();
-            final int end = matcher.end();
-            clickableSpan = new ClickableSpan() {
-
-                public void onClick(View v) {
-                	Toast.makeText(getActivity(),"you clicked a word!",Toast.LENGTH_LONG).show();
-                    String lword = (String) text.subSequence(begin, end).toString();
-
-
-                }
-
-            };
-
-            text.setSpan(clickableSpan, begin, end, 0);
-        }
-        view.setMovementMethod(LinkMovementMethod.getInstance());
-        view.setText(text, BufferType.SPANNABLE);
+		final SpannableString text = new SpannableString("Kiam naskigis Karlo, rozkolora kaj sana, liaj gepatroj estis ankorau tre junaj.");
+		String regex = "\\w+";
+		Pattern p = Pattern.compile(regex);
+      
+		Matcher matcher = p.matcher(text);
+		
+		while (matcher.find()) {
+			TouchableSpan span = new TouchableSpan() {
+	
+				@Override
+				public void updateDrawState(TextPaint tp) {
+					tp.setUnderlineText(false);
+					//tp.setAntiAlias(true);
+				}
+	
+				@Override
+				public boolean onTouch(View widget, MotionEvent event) {
+					Toast.makeText(getActivity(),"you clicked a word!",Toast.LENGTH_SHORT).show();
+					return true;
+				}
+			};
+			text.setSpan(span,matcher.start(),matcher.end(),0);
+		}
+		view.setMovementMethod(new LinkTouchMovementMethod());
+		view.setText(text,BufferType.SPANNABLE);
+		
+		//this will create a clickable span (ie: blue with underline text, etc)
+//        ClickableSpan clickableSpan = null;
+//		  while (matcher.find()) {
+//            final int begin = matcher.start();
+//            final int end = matcher.end();
+//            clickableSpan = new ClickableSpan() {
+//
+//                public void onClick(View v) {
+//                	Toast.makeText(getActivity(),"you clicked a word!",Toast.LENGTH_SHORT).show();
+//                    String lword = (String) text.subSequence(begin, end).toString();
+//
+//
+//                }
+//
+//            };
+//
+//            text.setSpan(clickableSpan, begin, end, 0);
+//        }
+//        view.setMovementMethod(LinkMovementMethod.getInstance());
+//        view.setText(text, BufferType.SPANNABLE);
 		
 //		for (String word : words) {
 //			Log.d("Chapter","setting text");
@@ -96,21 +117,13 @@ public class ChapterFragment extends Fragment {
 			Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.chapter, container, false);
 		
-		//view.setText("the");
 		return view;
 	}
 
 	public void setText(String item) {
 
 	}
-	
-//	public void setText(String item) {
-//		TextView view = (TextView) getView().findViewById(R.id.chapterText);
-//		//view.getSettings().setJavaScriptEnabled(true);
-//		
-//		String custom = "<html><body><h1>Hello, Webview!</h1></body></html>";
-//		view.loadData(custom,"text/html","UTF-8");
-//	}
+
 
 	public boolean onTouch(View view, MotionEvent event) {
 		// TODO Auto-generated method stub
