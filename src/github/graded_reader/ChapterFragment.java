@@ -40,10 +40,7 @@ public class ChapterFragment extends Fragment {
 		//this is textview
 		TextView view = (TextView) getView().findViewById(R.id.chapterText);
 		Log.d("Chapter","creating text view");
-		//view.setOnTouchListener(new CustomTouchListener());
-		String[] words = new String[2];
-		words[0] = "The";
-		words[1] = "man";
+
 		
 		final SpannableString text = new SpannableString("Kiam naskigis Karlo, rozkolora kaj sana, liaj gepatroj estis ankorau tre junaj.");
 		String regex = "\\w+";
@@ -57,7 +54,7 @@ public class ChapterFragment extends Fragment {
 				@Override
 				public void updateDrawState(TextPaint tp) {
 					tp.setUnderlineText(false);
-					//tp.setAntiAlias(true);
+					tp.setAntiAlias(true);
 				}
 	
 				@Override
