@@ -117,7 +117,7 @@ public class GradedReaderActivity extends Activity
 	}
 	
 	protected void onResume() {
-		
+		super.onResume();
 	}
 	
 	private void setCurrentChapter(int currentChapter) {
