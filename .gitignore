@@ -6,6 +6,7 @@
 *.exe
 *.o
 *.so
+R.java
 
 # Packages #
 ############
@@ -27,3 +28,8 @@
 # Gedit #
 ############
 *~
+
+# Eclipse Stuff #
+.settings/*
+.safetable/*
+.metadata/*
