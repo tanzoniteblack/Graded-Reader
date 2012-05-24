@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class GradedReaderActivity extends Activity
 				implements OnSettingsDialogDoneListener {
@@ -102,6 +103,11 @@ public class GradedReaderActivity extends Activity
 	
 	protected void onStop() {
 		super.onStop();
+		
+		SharedPreferences settings = getSharedPreferences(PREFERENCES, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putInt("currentChapter",getCurrentChapter());
+		editor.commit();
 	}
 	
 	protected void onPause() {
@@ -120,8 +126,12 @@ public class GradedReaderActivity extends Activity
 		super.onResume();
 	}
 	
+	private int getCurrentChapter() {
+		return 1;
+	}
+	
 	private void setCurrentChapter(int currentChapter) {
-		//TODO: restore current chapter
+		Toast.makeText(this,"The current chapter is " + currentChapter,Toast.LENGTH_LONG).show();
 	}
 }
 
