@@ -52,14 +52,9 @@ public class ChapterFragment extends Fragment {
 			sb.append(word).append(" ");
 		final SpannableString text = new SpannableString(sb.toString());
 		
-		//final SpannableString text = new SpannableString("Kiam naskigis Karlo.");
-		String regex = "[\\w\\d-]+";
-		Pattern p = Pattern.compile(regex);
-      
-		Matcher matcher = p.matcher(text);
-		int i = 0; 
 		
-		while (matcher.find()) {
+		int index = 0;
+		for (int i=0; i<words.length; i++) {
 			TouchableSpan span = new TouchableSpan() {
 	
 				@Override
@@ -74,9 +69,9 @@ public class ChapterFragment extends Fragment {
 					return true;
 				}
 			};
-			text.setSpan(span,matcher.start(),matcher.end(),0);
+			text.setSpan(span,index,index+words[i].length(),0);
 			span.setWordNode(words[i],node[i]);
-			i ++;
+			index += (words[i].length() + 1); //the +1 is for the following space
 		}
 		view.setMovementMethod(new LinkTouchMovementMethod());
 		view.setText(text,BufferType.SPANNABLE);
