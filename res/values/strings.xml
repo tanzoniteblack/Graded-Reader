@@ -3,5 +3,8 @@
 
     <string name="hello">Hello World, GradedReaderActivity!</string>
     <string name="app_name">Graded Reader</string>
+    <string name="word">Word</string>
+    <string name="sentence">Sentence</string>
+    <string name="highlight">Highlight?</string>
 
 </resources>

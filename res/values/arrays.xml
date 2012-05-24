@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="values">
+        <item>Word</item>
+        <item>Sentence</item>
+    </string-array>
+    <string-array name="entries">
+        <item>WorD</item>
+        <item>SentencE</item>
+    </string-array>
+</resources>

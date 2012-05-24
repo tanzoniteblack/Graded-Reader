@@ -17,6 +17,21 @@ import android.util.Log;
  */
 public class SettingsDialogFragment extends DialogFragment 
 							implements DialogInterface.OnClickListener {
+	public static final String DEFAULT_S = "default";
+	private boolean DEFAULT_TO_WORD = true;
+	public static final String HIGHLIGHT_S = "highlight";
+	private boolean HIGHLIGHT = true;
+	
+	private Activity parentActivity;
+	
+	public SettingsDialogFragment() {
+		super();
+	}
+	
+	public SettingsDialogFragment(Activity activity) {
+		parentActivity = activity;
+	}
+
 	public static SettingsDialogFragment
     newInstance(String message)
 	{
@@ -43,8 +58,7 @@ public class SettingsDialogFragment extends DialogFragment
 	}
 
     @Override    
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
     	this.setCancelable(true);
         int style = DialogFragment.STYLE_NORMAL, theme = 0;
@@ -53,12 +67,18 @@ public class SettingsDialogFragment extends DialogFragment
 
     @Override    
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+    	super.onCreateDialog(savedInstanceState);
+    	if (savedInstanceState != null) {
+			DEFAULT_TO_WORD = savedInstanceState.getBoolean(DEFAULT_S,true);
+			HIGHLIGHT = savedInstanceState.getBoolean(HIGHLIGHT_S,true);
+    	}
+    		
     	final String options [] = {"Default to Word","Highlight Word/Sentence"};
     	AlertDialog.Builder b = 
     	    new AlertDialog.Builder(getActivity())
     	    .setTitle("Settings")
     	    .setMultiChoiceItems(options,
-                        new boolean[]{true, false},
+                        new boolean[]{DEFAULT_TO_WORD, HIGHLIGHT},
                         new DialogInterface.OnMultiChoiceClickListener() {
                             public void onClick(DialogInterface dialog, int which,
                                     boolean isChecked) {
@@ -72,14 +92,27 @@ public class SettingsDialogFragment extends DialogFragment
     	return b.create();
     }
 
-    public void onClick(DialogInterface dialog, int which)
-    {
+    /**
+     * save settings when "Save" button is clicked
+     */
+    public void onClick(DialogInterface dialog, int which) {
     	OnSettingsDialogDoneListener act = (OnSettingsDialogDoneListener) getActivity();
         boolean cancelled = false;
-    	if (which == AlertDialog.BUTTON_NEGATIVE)
-    	{
+    	if (which == AlertDialog.BUTTON_NEGATIVE) {
     		cancelled = true;
+    	} else if (which == AlertDialog.BUTTON_POSITIVE) {
+    		Log.d("SettingsDialogFrag","POSITIVE");
     	}
     	act.onDialogDone(getTag(), cancelled, "Alert dismissed");
     }
+    
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+    	super.onSaveInstanceState(outState);
+    	Log.d("SettingsDialogFrag","SAVE_STATE");
+    	outState.putBoolean(DEFAULT_S,DEFAULT_TO_WORD);
+    	outState.putBoolean(HIGHLIGHT_S,HIGHLIGHT);
+    }
+
+    
 }

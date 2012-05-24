@@ -1,9 +1,11 @@
 package github.graded_reader;
 
+import github.graded_reader.FragmentPreferences.SettingsPreferenceFragment;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -77,19 +79,24 @@ public class GradedReaderActivity extends Activity
 		switch (item.getItemId()) {
 		case R.id.settings:
 			Log.v("Settings", "Launch");
-			this.createSettingsDialog();
-			break;
+			this.createSettingsFragment();
+			return true;
 		default:
-			break;
+			return super.onOptionsItemSelected(item);
 		}
-		return true;
+	}
+	
+	private void createSettingsFragment() {
+		Intent i = new Intent(GradedReaderActivity.this, FragmentPreferences.class);
+		startActivity(i);
 	}
 
 	
 	private void createSettingsDialog() {
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		
-		SettingsDialogFragment adf = SettingsDialogFragment.newInstance("Settings");
+		//SettingsDialogFragment adf = SettingsDialogFragment.newInstance("Settings");
+		SettingsDialogFragment adf = new SettingsDialogFragment(this);
 		
 		adf.show(ft,"Settings Menu");
 	}
@@ -117,8 +124,7 @@ public class GradedReaderActivity extends Activity
 		SharedPreferences settings = getSharedPreferences(PREFERENCES,0);
 		SharedPreferences.Editor editor = settings.edit();
 		
-		int mChapter = 4; //this is the chapter number
-		editor.putInt("currentChapter",mChapter);
+		editor.putInt("currentChapter",getCurrentChapter());
 		editor.commit();
 	}
 	
@@ -127,7 +133,7 @@ public class GradedReaderActivity extends Activity
 	}
 	
 	private int getCurrentChapter() {
-		return 1;
+		return 5;
 	}
 	
 	private void setCurrentChapter(int currentChapter) {
