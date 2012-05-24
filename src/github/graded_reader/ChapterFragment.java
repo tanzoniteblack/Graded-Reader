@@ -3,10 +3,8 @@
  */
 package github.graded_reader;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextPaint;
@@ -66,6 +64,10 @@ public class ChapterFragment extends Fragment {
 				@Override
 				public boolean onTouch(View widget, MotionEvent event) {
 					Toast.makeText(getActivity(),"Word=" + word + "\nNode=" + node,Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(getActivity(),GradedReaderActivity.class);
+					intent.putExtra("node",node);
+					intent.putExtra("word",word);
+					
 					return true;
 				}
 			};
