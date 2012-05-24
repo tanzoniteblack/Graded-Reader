@@ -41,12 +41,23 @@ public class ChapterFragment extends Fragment {
 		TextView view = (TextView) getView().findViewById(R.id.chapterText);
 		Log.d("Chapter","creating text view");
 
+		//this will be input String[] and int[]
+		String[] words = new String[3];
+		words[0] = "Kiam"; words[1] = "naskig-is"; words[2] = "Karlo.";
+		int[] node = new int[3];
+		node[0] = 1; node[1] = 2; node[2] = 3;
 		
-		final SpannableString text = new SpannableString("Kiam naskigis Karlo, rozkolora kaj sana, liaj gepatroj estis ankorau tre junaj.");
-		String regex = "\\w+";
+		StringBuilder sb = new StringBuilder();
+		for (String word : words)
+			sb.append(word).append(" ");
+		final SpannableString text = new SpannableString(sb.toString());
+		
+		//final SpannableString text = new SpannableString("Kiam naskigis Karlo.");
+		String regex = "[\\w\\d-]+";
 		Pattern p = Pattern.compile(regex);
       
 		Matcher matcher = p.matcher(text);
+		int i = 0; 
 		
 		while (matcher.find()) {
 			TouchableSpan span = new TouchableSpan() {
@@ -59,11 +70,13 @@ public class ChapterFragment extends Fragment {
 	
 				@Override
 				public boolean onTouch(View widget, MotionEvent event) {
-					Toast.makeText(getActivity(),"you clicked a word!",Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity(),"Word=" + word + "\nNode=" + node,Toast.LENGTH_SHORT).show();
 					return true;
 				}
 			};
 			text.setSpan(span,matcher.start(),matcher.end(),0);
+			span.setWordNode(words[i],node[i]);
+			i ++;
 		}
 		view.setMovementMethod(new LinkTouchMovementMethod());
 		view.setText(text,BufferType.SPANNABLE);

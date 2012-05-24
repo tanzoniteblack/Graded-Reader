@@ -15,6 +15,9 @@ import android.view.View;
  */
 public abstract class TouchableSpan extends CharacterStyle implements UpdateAppearance {
 
+	public String word;
+	public int node;
+
 	/**
 	 * can make text underlined or change link color
 	 */
@@ -27,5 +30,10 @@ public abstract class TouchableSpan extends CharacterStyle implements UpdateAppe
 	 * @return
 	 */
 	public abstract boolean onTouch(View widget, MotionEvent event);
+	
+	public void setWordNode(String word, int node) {
+		this.word = word;
+		this.node = node;
+	}
 
 }
