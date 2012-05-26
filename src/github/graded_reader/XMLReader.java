@@ -1,4 +1,4 @@
-//package github.graded_reader;
+package github.graded_reader;
 
 import java.io.File;
 
