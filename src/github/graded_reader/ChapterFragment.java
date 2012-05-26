@@ -3,6 +3,12 @@
  */
 package github.graded_reader;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import github.graded_reader.Text.Chapter;
+import github.graded_reader.Text.Sentence;
+import github.graded_reader.Text.Word;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,11 +45,38 @@ public class ChapterFragment extends Fragment {
 		TextView view = (TextView) getView().findViewById(R.id.chapterText);
 		Log.d("Chapter","creating text view");
 
-		//this will be input String[] and int[]
-		String[] words = new String[3];
-		words[0] = "Kiam"; words[1] = "naskig-is"; words[2] = "Karlo.";
-		int[] node = new int[3];
-		node[0] = 1; node[1] = 2; node[2] = 3;
+		// read XML data
+		Text karlo = new Text(this.getResources().openRawResource(R.raw.karlo));
+		
+		ArrayList<String> words = new ArrayList<String>();
+		ArrayList<String> trans = new ArrayList<String>();
+		HashMap<Integer, String> sentTrans = new HashMap<Integer, String>();
+
+		int indexCount = 0;
+		for (Chapter chap : karlo.getChapters()) {
+			for (ArrayList<Sentence> paragraph : chap.getParagraphs()) {
+				words.add("\t");
+				trans.add("\t");
+				for (Sentence sentence : paragraph) {
+					for (Word word : sentence.getWords()) {
+						words.add(word.getWordText());
+						trans.add(word.getWordTranslation());
+						sentTrans.put(words.size() - 1, sentence.sentenceTranslation);
+					}
+				}
+				words.add("\n");
+				trans.add("\n");
+				sentTrans.put(words.size() - 1, "");
+				
+			}
+		}
+		
+//		//this will be input String[] and int[]
+//		String[] words = new String[3];
+//		words[0] = "Kiam"; words[1] = "naskiĝis"; words[2] = "Karlo.";
+//		String[] trans= new String[3];
+//		trans[0] = "when"; trans[1] = "was born"; trans[2] = "Karlo";
+//		String sentence = "When Karlo was born";
 		
 		StringBuilder sb = new StringBuilder();
 		for (String word : words)
@@ -52,7 +85,7 @@ public class ChapterFragment extends Fragment {
 		
 		
 		int index = 0;
-		for (int i=0; i<words.length; i++) {
+		for (int i=0; i<words.size(); i++) {
 			TouchableSpan span = new TouchableSpan() {
 	
 				@Override
@@ -63,17 +96,25 @@ public class ChapterFragment extends Fragment {
 	
 				@Override
 				public boolean onTouch(View widget, MotionEvent event) {
-					Toast.makeText(getActivity(),"Word=" + word + "\nNode=" + node,Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(getActivity(),GradedReaderActivity.class);
-					intent.putExtra("node",node);
-					intent.putExtra("word",word);
+					TextView wordFrag = (TextView) widget.getRootView().findViewById(R.id.wordText);
+					if (wordFrag != null) {
+						wordFrag.setText(word + " : " + trans);
+					}
+					
+					TextView sentFrag = (TextView) widget.getRootView().findViewById(R.id.sentenceText);
+					if (sentFrag != null) {
+						sentFrag.setText(sentence);
+					}
+//					Intent intent = new Intent(getActivity(),GradedReaderActivity.class);
+//					intent.putExtra("node", trans);
+//					intent.putExtra("word", word);
 					
 					return true;
 				}
 			};
-			text.setSpan(span,index,index+words[i].length(),0);
-			span.setWordNode(words[i],node[i]);
-			index += (words[i].length() + 1); //the +1 is for the following space
+			text.setSpan(span,index,index+words.get(i).length(),0);
+			span.setWordNode(words.get(i),trans.get(i), sentTrans.get(i));
+			index += (words.get(i).length() + 1); //the +1 is for the following space
 		}
 		view.setMovementMethod(new LinkTouchMovementMethod());
 		view.setText(text,BufferType.SPANNABLE);

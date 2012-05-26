@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
-
     <TextView
         android:id="@+id/chapterText"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginTop="20dip"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-</LinearLayout>
-
-<!-- android:text="Kiam naskiĝis Karlo, rozkolora kaj sana, liaj gepatroj estis ankoraŭ tre junaj. Ilia unua infano li estis. Lia apero en tiu ĉi mondo kaŭzis grandegan ĝojon en la tuta familio. Filo! vera vivanta knabeto! La junaj gesinjoroj Davis estis tre fieraj pri Karlo kaj ĝuis internan kaj trankvilan plezuron."-->
+</ScrollView>

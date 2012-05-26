@@ -10,7 +10,7 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:layout_marginTop="20dip"
-        android:text="rozkolora:\n\t'rose colored'"
+        android:text="Click a word to see its translation."
         android:textAppearance="?android:attr/textAppearanceLarge"/>
     
     <!--fragment

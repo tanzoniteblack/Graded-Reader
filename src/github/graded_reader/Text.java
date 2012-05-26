@@ -1,19 +1,17 @@
-//package github.graded_reader;
+package github.graded_reader;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 
 public class Text {
 	/*
@@ -67,6 +65,10 @@ public class Text {
 		public int getParagraphCount() {
 			return paragraphs.size();
 		}
+		
+		public ArrayList<ArrayList<Sentence>> getParagraphs() {
+			return paragraphs;
+		}
 	}
 	
 	/*
@@ -78,6 +80,7 @@ public class Text {
 		
 		public Sentence () {
 			words = new ArrayList<Word>();
+			sentenceTranslation = "";
 		}
 		
 		public void addWord(Word word) {
@@ -89,7 +92,29 @@ public class Text {
 		}
 
 		public void setSentenceTranslation(String sentenceTranslation) {
-			this.sentenceTranslation = sentenceTranslation;
+			if (sentenceTranslation != "")
+				this.sentenceTranslation = sentenceTranslation;
+			else
+				this.sentenceTranslation = "No translation given.";
+		}
+		
+		public int getWordCount() {
+			return words.size();
+		}
+		
+		public ArrayList<Word> getWords () {
+			return words;
+		}
+		
+		@Override
+		public String toString() {
+			StringBuilder sentText = new StringBuilder();
+			for (Word word : words) {
+				sentText.append(word.getWordText());
+				sentText.append(" ");
+			}
+			
+			return sentText.toString();
 		}
 	}
 	
@@ -110,7 +135,10 @@ public class Text {
 		}
 
 		public void setWordText(String wordText) {
-			this.wordText = wordText;
+			if (wordText != "")
+				this.wordText = wordText;
+			else
+				this.wordText = "No translation given.";
 		}
 
 		public String getWordTranslation() {
@@ -120,13 +148,11 @@ public class Text {
 		public void setWordTranslation(String wordTranslation) {
 			this.wordTranslation = wordTranslation;
 		}
-		
-		
 	}
 	
 	private ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 	
-	public Text (File xmlFile) {
+	public Text (InputStream xmlFile) {
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -197,11 +223,11 @@ public class Text {
 														if (l1Node.getNodeType() == Node.ELEMENT_NODE) {
 															Element l1 = (Element) l1Node;
 															// set l1
-															if (l1.getNodeName().equals("l1")) {
+															if (l1.getNodeName().equals("l2")) {
 																newWord.setWordText(l1.getTextContent());
 															}
 															// set l2
-															if (l1.getNodeName().equals("l2")) {
+															if (l1.getNodeName().equals("l1")) {
 																newWord.setWordTranslation(l1.getTextContent());
 															}
 														}
@@ -230,17 +256,22 @@ public class Text {
 		return chapters;
 	}
 	
-	public static void main(String[] args) {
-		try {
-			File xmlFile = new File("karlo.xml");
-			Text reader = new Text(xmlFile);
-			ArrayList<Chapter> karloChapt = reader.getChapters();
-			
-			for (Chapter chap : karloChapt) {
-				System.out.println(chap.getParagraphCount());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		try {
+//			File xmlFile = new File("karlo.xml");
+//			Text reader = new Text(xmlFile);
+//			ArrayList<Chapter> karloChapt = reader.getChapters();
+//			
+//			for (Chapter chap : karloChapt) {
+//				for (ArrayList<Sentence> paragraph : chap.getParagraphs()) {
+//					for (Sentence sentence : paragraph) {
+//						System.out.print(sentence.getSentenceTranslation());
+//					}
+//					System.out.print("\n\n");
+//				}
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 }
